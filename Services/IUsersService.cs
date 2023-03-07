@@ -4,10 +4,10 @@ namespace MyForum.Services
 {
     public interface IUsersService
     {
-        List<UserEntity> GetUsers();
-        UserEntity GetUser(int id);
-        void Add(UserEntity user);
+        List<User> GetUsers();
+        User GetUser(int id);
+        void Add(User user);
         void Delete(int id);
-        void Update(UserEntity user);
+        void Update(User user);
     }
 }

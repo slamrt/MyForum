@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Storage;
-using MyForum.DAL;
-using MyForum.Models;
+/*using MyForum.DAL;
+*/using MyForum.Models;
 using MyForum.Repositories;
 
 namespace MyForum.Services
@@ -12,8 +12,16 @@ namespace MyForum.Services
         {
             _repository = repository;
         }
-        public void Add(UserEntity user)
+        public void Add(User userDTO)
         {
+            User user = new User()
+            {
+                Id= userDTO.Id,
+                Name = userDTO.Name,
+                Email= userDTO.Email,
+                Password=userDTO.Password
+
+            };
             _repository.Add(user);
         }
 
@@ -22,17 +30,17 @@ namespace MyForum.Services
             _repository.Delete(id);
         }
 
-        public UserEntity GetUser(int id)
+        public User GetUser(int id)
         {
             return _repository.GetUser(id);
         }
 
-        public List<UserEntity> GetUsers()
+        public List<User> GetUsers()
         {
             return _repository.GetUsers();
         }
 
-        public void Update(UserEntity user)
+        public void Update(User user)
         {
             _repository.Update(user);
         }

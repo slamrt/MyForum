@@ -1,4 +1,4 @@
-﻿/*using Microsoft.EntityFrameworkCore.Storage;
+﻿using Microsoft.EntityFrameworkCore.Storage;/*
 using MyForum.DAL;*/
 using MyForum.Models;
 using MyForum.Repositories;
@@ -12,9 +12,16 @@ namespace MyForum.Services
         {
             _repository = repository;
         }
-        public void Add(UserEntity user)
+        public void Add(User user)
         {
-            _repository.Add(user);
+            UserEntity entity = new UserEntity()
+            {
+                Id = user.Id,
+                Name = user.Name,
+                Email= user.Email,
+                Password= user.Password
+            };
+            _repository.Add(entity);
         }
 
         public void Delete(int id)
@@ -22,19 +29,42 @@ namespace MyForum.Services
             _repository.Delete(id);
         }
 
-        public UserEntity GetUser(int id)
+        public User GetUser(int id)
         {
-            return _repository.GetUser(id);
+            UserEntity entity = _repository.GetUser(id);
+            User user = new User
+            {
+                Id = entity.Id,
+                Name = entity.Name,
+                Email = entity.Email,
+                Password = entity.Password
+            };
+            return user;
         }
 
-        public List<UserEntity> GetUsers()
+        public List<User> GetUsers()
         {
-            return _repository.GetUsers();
+            List<UserEntity> userEntities = _repository.GetUsers();
+            List<User> users = userEntities.Select(u => new User()
+            {
+                Id = u.Id,
+                Name = u.Name,
+                Email = u.Email,
+                Password = u.Password
+            }).ToList();
+            return users;
         }
 
-        public void Update(UserEntity user)
+        public void Update(User user)
         {
-            _repository.Update(user);
+            UserEntity entity = new UserEntity
+            {
+                Id = user.Id,
+                Name = user.Name,
+                Email = user.Email,
+                Password = user.Password
+            };
+            _repository.Update(entity);
         }
     }
 }
