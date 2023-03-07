@@ -1,13 +1,13 @@
 ﻿using MyForum.Models;
 
-namespace MyForum.Services
+namespace MyForum.Repositories
 {
-    public interface IUsersService
+    public interface IUsersRepository
     {
         List<UserEntity> GetUsers();
         UserEntity GetUser(int id);
+        void Update(UserEntity user);
         void Add(UserEntity user);
         void Delete(int id);
-        void Update(UserEntity user);
     }
 }

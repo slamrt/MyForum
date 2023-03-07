@@ -11,7 +11,7 @@ namespace MyForum.Repositories
             _context = context;
         }
 
-        public void Add(User user)
+        public void Add(UserEntity user)
         {
             _context.Users.Add(user);
             _context.SaveChanges();
@@ -19,22 +19,22 @@ namespace MyForum.Repositories
 
         public void Delete(int id)
         {
-            var UserToDelete = _context.Users.FirstOrDefault(u => u.Id == id);
-            _context.Remove(UserToDelete);
+            var userToDelete = _context.Users.FirstOrDefault(u => u.Id == id);
+            _context.Remove(userToDelete);
             _context.SaveChanges();
         }
 
-        public User GetUser(int id)
+        public UserEntity GetUser(int id)
         {
             return _context.Users.FirstOrDefault(u => u.Id == id);
         }
 
-        public List<User> GetUsers()
+        public List<UserEntity> GetUsers()
         {
             return _context.Users.ToList();
         }
 
-        public void Update(User user)
+        public void Update(UserEntity user)
         {
             _context.Users.Update(user);
             _context.SaveChanges();

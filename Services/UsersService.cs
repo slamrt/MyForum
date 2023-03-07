@@ -1,5 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Storage;
-using MyForum.DAL;
+﻿/*using Microsoft.EntityFrameworkCore.Storage;
+using MyForum.DAL;*/
 using MyForum.Models;
 using MyForum.Repositories;
 

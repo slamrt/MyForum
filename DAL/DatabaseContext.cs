@@ -9,6 +9,6 @@ namespace MyForum.DAL
         {
             
         }
-        public DbSet<User> Users { get; set; }
+        public DbSet<UserEntity> Users { get; set; }
     }
 }
