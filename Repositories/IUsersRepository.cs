@@ -1,6 +1,6 @@
-﻿using MyForum.Models;
+﻿using Models;
 
-namespace MyForum.Repositories
+namespace Repositories
 {
     public interface IUsersRepository
     {

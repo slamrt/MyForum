@@ -1,9 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore.Storage;/*
-using MyForum.DAL;*/
-using MyForum.Models;
-using MyForum.Repositories;
+﻿using Microsoft.EntityFrameworkCore.Storage;
+using Models;
+using Repositories;
 
-namespace MyForum.Services
+namespace Services
 {
     public class UsersService : IUsersService
     {

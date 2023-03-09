@@ -5,13 +5,13 @@ VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyForum", "MyForum\MyForum.csproj", "{C2E91960-0168-4BB3-834D-8B7ED78ECB8F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{A5B4EA63-D322-4EBA-9943-FB60EC9F413F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DAL", "DAL\DAL.csproj", "{A5B4EA63-D322-4EBA-9943-FB60EC9F413F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csproj", "{97168524-776A-470C-BBA3-85E36CBB795D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Models", "Models\Models.csproj", "{97168524-776A-470C-BBA3-85E36CBB795D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repositories", "Repositories\Repositories.csproj", "{85486F07-9F4D-4991-8F4A-D4AB4E7D9EB2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Repositories", "Repositories\Repositories.csproj", "{85486F07-9F4D-4991-8F4A-D4AB4E7D9EB2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services", "Services\Services.csproj", "{2FD11F51-797E-4642-AF4C-AB43C6E5290A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Services", "Services\Services.csproj", "{2FD11F51-797E-4642-AF4C-AB43C6E5290A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

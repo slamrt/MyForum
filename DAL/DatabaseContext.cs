@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using MyForum.Models;
+using Models;
 
-namespace MyForum.DAL
+namespace DAL
 {
     public class DatabaseContext: DbContext
     {

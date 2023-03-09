@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace MyForum.Models
+namespace Models
 {
     public class UserEntity
     {

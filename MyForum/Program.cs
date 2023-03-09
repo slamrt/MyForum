@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using MyForum.DAL;
+using DAL;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +8,7 @@ builder.Services.AddRazorPages();
 builder.Services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(
     builder.Configuration.GetConnectionString("ConnectionString")
     ));
+builder.Services.AddAutoMapper(typeof(Program).Assembly);
 
 var app = builder.Build();
 

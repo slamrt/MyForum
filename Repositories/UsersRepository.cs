@@ -1,7 +1,7 @@
-﻿using MyForum.DAL;
-using MyForum.Models;
+﻿using DAL;
+using Models;
 
-namespace MyForum.Repositories
+namespace Repositories
 {
     public class UsersRepository : IUsersRepository
     {
