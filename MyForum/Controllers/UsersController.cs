@@ -19,21 +19,32 @@ namespace MyForum.Controllers
         }
 
         [HttpGet]
-        public List<User> GetUsers()
+        public List<GetResponse> GetUsers()
         {
-            return _service.GetUsers();
+            List<User> users =  _service.GetUsers();
+            List<GetResponse> results = _mapper.Map<List<User>,List<GetResponse>>(users);
+            return results;
+        }
+
+        [HttpGet("{id}", Name = "Get")]
+        public GetResponse GetUser(int id)
+        {
+            User user = _service.GetUser(id);
+            var response = _mapper.Map<GetResponse>(user);
+            return response;
         }
 
         [HttpPost]
-        public void Add(CreateOrUpdateRequest newUser)
+        public void Add([FromBody]CreateOrUpdateRequest newUser)
         {
             var user = _mapper.Map<User>(newUser);
             _service.Add(user);
         }
 
         [HttpPut]
-        public void Update(User user)
+        public void Update(CreateOrUpdateRequest newUser)
         {
+            var user = _mapper.Map<User>(newUser);
             _service.Update(user);
         }
 
