@@ -1,15 +1,26 @@
 using Microsoft.EntityFrameworkCore;
 using DAL;
+using Services;
+using Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
 builder.Services.AddRazorPages();
+
+builder.Services.AddAutoMapper(typeof(Program).Assembly);
+
+//builder.Services.AddTransient<IUsersRepository, UsersRepository>();
+builder.Services.AddSingleton<IUsersRepository, UsersRepository>();
+
+//builder.Services.AddTransient<IUsersService, UsersService>();
+builder.Services.AddSingleton<IUsersService, UsersService>();
+
+builder.Services.AddTransient<DatabaseContext>();
 builder.Services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(
     builder.Configuration.GetConnectionString("ConnectionString")
     ));
-builder.Services.AddAutoMapper(typeof(Program).Assembly);
-
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -24,9 +35,12 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
+app.UseAuthentication();
 app.UseAuthorization();
 
-app.MapRazorPages();
+//app.MapRazorPages();
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();

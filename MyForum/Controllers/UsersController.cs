@@ -6,7 +6,7 @@ using Services;
 
 namespace MyForum.Controllers
 {
-    [Route("/api[controller]")]
+    [Route("Users")]
     public class UsersController : Controller
     {
         private readonly IUsersService _service;
@@ -18,7 +18,7 @@ namespace MyForum.Controllers
             _mapper = mapper;
         }
 
-        [HttpGet]
+        [HttpGet("GetUsers")]
         public List<GetResponse> GetUsers()
         {
             List<User> users =  _service.GetUsers();
