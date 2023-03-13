@@ -11,16 +11,18 @@ builder.Services.AddRazorPages();
 
 builder.Services.AddAutoMapper(typeof(Program).Assembly);
 
-//builder.Services.AddTransient<IUsersRepository, UsersRepository>();
-builder.Services.AddSingleton<IUsersRepository, UsersRepository>();
+//builder.Services.AddSingleton<IUsersRepository, UsersRepository>();
+builder.Services.AddScoped<IUsersRepository, UsersRepository>();
 
-//builder.Services.AddTransient<IUsersService, UsersService>();
-builder.Services.AddSingleton<IUsersService, UsersService>();
+//builder.Services.AddSingleton<IUsersService, UsersService>();
+builder.Services.AddScoped<IUsersService, UsersService>();
 
-builder.Services.AddTransient<DatabaseContext>();
+//builder.Services.AddTransient<DatabaseContext>();
+
 builder.Services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(
     builder.Configuration.GetConnectionString("ConnectionString")
     ));
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
