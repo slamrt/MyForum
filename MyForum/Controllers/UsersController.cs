@@ -10,42 +10,43 @@ namespace MyForum.Controllers
     public class UsersController : Controller
     {
         private readonly IUsersService _service;
-        private readonly IMapper _mapper;
-
-        public UsersController(IUsersService service, IMapper mapper)
+/*        private readonly IMapper _mapper;
+*/
+        public UsersController(IUsersService service/*, IMapper mapper*/)
         {
             _service = service;
-            _mapper = mapper;
+            //_mapper = mapper;
         }
 
         [HttpGet("GetUsers")]
-        public List<GetResponse> GetUsers()
+        public List<User> GetUsers()
         {
             List<User> users =  _service.GetUsers();
-            List<GetResponse> results = _mapper.Map<List<User>,List<GetResponse>>(users);
-            return results;
+            return users;
         }
 
         [HttpGet("{id}", Name = "Get")]
-        public GetResponse GetUser(int id)
+        public User GetUser(int id)
         {
-            User user = _service.GetUser(id);
-            var response = _mapper.Map<GetResponse>(user);
-            return response;
+/*            User user = _service.GetUser(id);
+*/           // var response = _mapper.Map<GetResponse>(user);
+            return _service.GetUser(id);
         }
 
         [HttpPost]
-        public void Add([FromBody]CreateOrUpdateRequest newUser)
+        public void Add([FromBody]User newUser)
         {
-            var user = _mapper.Map<User>(newUser);
-            _service.Add(user);
+            /* var user = _mapper.Map<User>(newUser);
+             _service.Add(user);*/
+            _service.Add(newUser);
         }
 
         [HttpPut]
-        public void Update(CreateOrUpdateRequest newUser)
+        public void Update(User newUser)
         {
-            var user = _mapper.Map<User>(newUser);
-            _service.Update(user);
+            /*var user = _mapper.Map<User>(newUser);
+            _service.Update(user);*/
+            _service.Update(newUser);
         }
 
         [HttpDelete]

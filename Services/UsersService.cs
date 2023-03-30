@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Storage;
+﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore.Storage;
 using Models;
 using Repositories;
 
@@ -7,20 +8,23 @@ namespace Services
     public class UsersService : IUsersService
     {
         private readonly IUsersRepository _repository;
-        public UsersService(IUsersRepository repository)
+        private readonly IMapper _mapper;
+        public UsersService(IUsersRepository repository, IMapper mapper)
         {
             _repository = repository;
+            _mapper = mapper;
         }
         public void Add(User user)
         {
-            UserEntity entity = new UserEntity()
+            /*UserEntity entity = new UserEntity()
             {
                 Id = user.Id,
                 Name = user.Name,
                 Email= user.Email,
                 Password= user.Password
             };
-            _repository.Add(entity);
+            _repository.Add(entity);*/
+            _repository.Add(_mapper.Map<UserEntity>(user));
         }
 
         public void Delete(int id)
@@ -30,7 +34,7 @@ namespace Services
 
         public User GetUser(int id)
         {
-            UserEntity entity = _repository.GetUser(id);
+            /*UserEntity entity = _repository.GetUser(id);
             User user = new User
             {
                 Id = entity.Id,
@@ -38,32 +42,27 @@ namespace Services
                 Email = entity.Email,
                 Password = entity.Password
             };
-            return user;
+            return user;*/
+            var entity = _repository.GetUser(id);
+            return _mapper.Map<User>(entity);
         }
 
         public List<User> GetUsers()
         {
             List<UserEntity> userEntities = _repository.GetUsers();
-            List<User> users = userEntities.Select(u => new User()
-            {
-                Id = u.Id,
-                Name = u.Name,
-                Email = u.Email,
-                Password = u.Password
-            }).ToList();
-            return users;
+            return _mapper.Map<List<User>>(userEntities);
         }
 
         public void Update(User user)
         {
-            UserEntity entity = new UserEntity
+            /*UserEntity entity = new UserEntity
             {
                 Id = user.Id,
                 Name = user.Name,
                 Email = user.Email,
                 Password = user.Password
-            };
-            _repository.Update(entity);
+            };*/
+            _repository.Update(_mapper.Map<UserEntity>(user));
         }
     }
 }
