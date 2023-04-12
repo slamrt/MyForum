@@ -16,6 +16,8 @@ builder.Services.AddScoped<IUsersRepository, UsersRepository>();
 
 //builder.Services.AddSingleton<IUsersService, UsersService>();
 builder.Services.AddScoped<IUsersService, UsersService>();
+builder.Services.AddScoped<IQuestionsRepository, QuestionsRepository>();
+builder.Services.AddScoped<IQuestionsService, QuestionsService>();
 
 //builder.Services.AddTransient<DatabaseContext>();
 

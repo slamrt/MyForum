@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Models;
-using MyForum.Controllers.Models;
 using Services;
 
 namespace MyForum.Controllers

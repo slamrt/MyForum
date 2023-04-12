@@ -10,5 +10,7 @@ namespace DAL
             
         }
         public DbSet<UserEntity> Users { get; set; }
+        public DbSet<QuestionEntity> Questions { get; set; }
+
     }
 }
